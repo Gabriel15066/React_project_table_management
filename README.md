@@ -1,70 +1,70 @@
-# Getting Started with Create React App
+ # PREMIER PROJET REACT: LISTE DE PRODUITS
+ ---
+## I.Présentation du projet
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+### Principe
+--> Le but est de créer un tableau montrant un stock d'aliments dans un tableau avec comme données son nom, son prix, sa catégorie, et sa disponibilité.
+### Fonctionnalités
+On peut rechercher une catégorie ou un aliment précis en le recherchant ou afficher uniquement les produits en stock en cochant la case.
+### Résultat
+À la fin on obtient ceci: 
+![Screenshot](/assets/final_tab.png)
 
-## Available Scripts
+---
+## II.Organisation du projet et du code
 
-In the project directory, you can run:
+### Projet
 
-### `npm start`
+Le projet se découpe en deux parties: 
+- La barre de recherche et la "checkbox" (le bouton à cocher)  --> Présent dans le dossier "src/components/forms"
+- Notre tableau de produits avec les lignes et le contenu qu'elles contiennent  --> Présent dans le dossier "src/products"
+(A noter que c'est notre fichier App.jsx qui va faire le lien entre toutes ces données).
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## Code
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+### Barre de recherche et checkbox:
+Je crée deux composants enfants "Checkbox" et "Input" qui vont chacun renvoyer une "</div/>" qui est une balise modélisant une sorte de boîte dans laquelle on peut mettre d'autres balises comme "</input/>", qui va nous permettre d'entrer des informations.
 
-### `npm test`
+On a alors juste a preciser le type pour avoir une barre de recherche et notre checkbox.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Ces deux composants vont être réunis dans leur composant parent "Search Bar" dans le fichier App.jsx.
 
-### `npm run build`
+### Table de produits
+Ici je vais créer deux composants enfants:
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+"ProductCategoryRow", qui est la ligne qui va contenir la catégorie d'aliment (Fruits, Vegetables...)
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+"ProductRow", qui est la ligne qui va contenir le nom et le prix ainsi que sa disponibilité (si il n'est plus en stock, donc qu'il est "false", alors on met le nom du produit en rouge).
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Ces deux composants vont être réunis dans le composant "ProductTable", qui va afficher notre tableau à l'aide d'une boucle et parcourir nos catégories
+puis en rajouter une nouvelle si elle est différente de celle d'avant mais aussi ajouter les éléments (noms, prix...)
 
-### `npm run eject`
+## Codage des fonctionnalités
+### Barre de recherche
+Objectif: Pouvoir taper dans notre barre de recherche ce que l'on souhaite et que notre tableau nous affiche ce que l'on a demandé
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+> [!NOTE]
+> Les composants parents "Search Bar" et "ProductTable" sont réunis dans le composant parent "App".
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Résolution: Je définis la valeur de mon input à une chaîne de caractères vide à l'aide du hook "useState" et j'associe un "setter" afin de prendre mon nouvel input
+et de vérifier à l'aide d'un évènement si ce que je rentre dans ma barre de recherche correspond au nom d'un des produits.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+Si c'est le cas je return true et j'affiche uniquement les produits demandées, sinon je return false et je ne les affiche pas.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+> [!TIP]
+> Un hook est une fonction JavaScript déjà implémentée dans la librairie React (elles commencent toutes par "use")
 
-## Learn More
+> Un "setter" va permettre de modifier la valeur d'une variable sans créer d'incohérences dans le rafraichissement de notre affichage et permet une meilleure lisibilité de code
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+### Checkbox
+Objectif: Pouvoir afficher uniquement les produits en stock et donc supprimer ceux qui ne nous intéresse pas, lorsque je coche la case.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+On va procéder de la même manière que pour "SearchBar":
+- On définit la valeur de notre case à false donc non cochée avec useState
+- J'associe un setter avec un évènement et on vérifie si notre produit est en stock si ce n'est pas le cas, je return false et donc je n'affiche pas les aliments qui ne sont pas en stock.
 
-### Code Splitting
+J'arrive donc pour ces deux fonctionnalités à n'afficher que ce qui est intéressant à l'aide de la fonction filter qui va supprimer des éléments dans ma liste et donc ne va pas les afficher.
+Je la stocke dans une variable qui va être la valeur de ma "productTable", qui réunit toutes les informations de mes données.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Conclusion:
+- Pour le tester, si vous avez npm et react déja installés, il vous suffit de clone ce repo et de lancer "npm start" pour voir le résultat.
