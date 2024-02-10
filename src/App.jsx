@@ -3,7 +3,7 @@ import './App.css';
 import { Input } from './components/forms/Input';
 import { Checkbox } from './components/forms/Checkbox';
 import 'bootstrap/dist/css/bootstrap.min.css';
-import { ProductCategoryRow } from './ProductCategoryRow';
+import { ProductCategoryRow } from './products/ProductCategoryRow';
 import { ProductRow } from './products/ProductRow';
 
 //Listes des produits
@@ -13,7 +13,11 @@ const PRODUCTS = [
   {category: "Fruits", price: '$2', stocked: false, name: "Passionfruit" },
   {category: "Vegetables", price: '$2', stocked: true, name: "Spinach" },
   {category: "Vegetables", price: '$4', stocked: false, name: "Pumpkin" },
-  {category: "Vegetables", price: '$1', stocked: true, name: "Peas" }
+  {category: "Meat", price: '$6', stocked: true, name: "Lamb" },
+  {category: "Meat", price: '$10', stocked: false, name: "Beef" },
+  {category: "Drinks", price: '$1', stocked: true, name: "Water" },
+  {category: "Drinks", price: '$2', stocked: false, name: "Soda" }
+
 ]
 
 //COMPOSANT 1
