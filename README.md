@@ -2,6 +2,8 @@
  ---
 ## I.Présentation du projet
 
+J'ai réalisé ce projet à l'aide de la vidéo de Grafikart sur Youtube, mais cet exercice vient surtout de la documentation du site de React.
+
 ### Principe
 --> Le but est de créer un tableau montrant un stock d'aliments dans un tableau avec comme données son nom, son prix, sa catégorie, et sa disponibilité.
 ### Fonctionnalités
