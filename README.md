@@ -41,7 +41,7 @@ Ici je vais créer deux composants enfants:
 Ces deux composants vont être réunis dans le composant "ProductTable", qui va afficher notre tableau à l'aide d'une boucle et parcourir nos catégories
 puis en rajouter une nouvelle si elle est différente de celle d'avant mais aussi ajouter les éléments (noms, prix...)
 
-## Codage des fonctionnalités
+## Développement des fonctionnalités
 ### Barre de recherche
 Objectif: Pouvoir taper dans notre barre de recherche ce que l'on souhaite et que notre tableau nous affiche ce que l'on a demandé
 
